@@ -1,0 +1,22 @@
+{
+    "students": [
+      {
+        "username": "john",
+        "password": "pass123",
+        "courses": [
+            "CSCI 313",
+            "CSCI 372",
+            "CSCI 161"
+        ]
+      },
+      {
+        "username": "test",
+        "password": "test123",
+        "courses": [
+            "CSCI 313",
+            "CSCI 372",
+            "CSCI 161"
+        ]
+      }
+    ]
+}
