@@ -11,13 +11,15 @@ import { AuthService } from './auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { CourseComponent } from './course/course.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     StudentViewComponent,
-    CourseComponent
+    CourseComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
