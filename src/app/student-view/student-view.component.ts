@@ -45,19 +45,6 @@ export class StudentViewComponent {
   courses: any[] = [];
 
   ngOnInit(): void {
-    this.dataService.getCourses().subscribe((courses) => {
-      this.courses = courses;
-    });
-    console.log(this.username);
-    console.log(this.isLoggedIn);
-    console.log(this.courses);
   }
 
-  get isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
-  }
-
-  get username(): string {
-    return this.authService.username;
-  }
 }

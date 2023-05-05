@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -7,39 +8,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  constructor() { }
-  private _isLoggedIn: boolean = false;
-  private _username: string = "";
+  constructor(private fireauth: AngularFireAuth, private router: Router) {}
 
-  getUsername(): string {
-    return this._username;
+
+  //login method
+  login(email : string, password : string) {
+    this.fireauth.signInWithEmailAndPassword(email, password).then( () => {
+        localStorage.setItem('token', 'true');
+        this.router.navigate(['dashboard']);
+    }, err => {
+      alert('Something went wrong');
+      this.router.navigate(['/login']);
+    })
   }
 
-  login(username: string) {
-    this._isLoggedIn = true;
-    this._username = username;
+  // register method
+  register(email : string, password : string) {
+    this.fireauth.createUserWithEmailAndPassword(email, password).then( () => {
+      alert('Registration Successful');
+      this.router.navigate(['/login']);
+    }, err => {
+      alert(err.message);
+        this.router.navigate(['/register']);
+    })
   }
 
+  // sign out 
   logout() {
-    this._isLoggedIn = false;
-    this._username = '';
+    this.fireauth.signOut().then( () => {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }, err => {
+      alert(err.message);
+    })
   }
 
-  get isLoggedIn(): boolean {
-    return this._isLoggedIn;
-  }
-
-  get username(): string {
-    return this._username;
-  }
-
-  setLoginDetails(username: string, isLoggedIn: boolean) {
-    this._username = username;
-    this._isLoggedIn = isLoggedIn;
-  }
-
-  clearLoginDetails() {
-    this._username = "";
-    this._isLoggedIn = false;
-  }
 }

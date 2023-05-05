@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "course-project-1eee4": {
+      "hosting": {
+        "course-application": [
+          "course-project-1eee4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "course-project-1eee4"
+  }
+}

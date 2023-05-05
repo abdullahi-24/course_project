@@ -3,13 +3,13 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent {
+export class RegisterComponent {
 
-  email: string = "";
+  username: string = "";
   password: string = "";
 
   constructor(private auth : AuthService) {}
@@ -18,8 +18,8 @@ export class LoginComponent {
 
   }
 
-  login() {
-    if(this.email == '') {
+  register() {
+    if(this.username == '') {
       alert('Please enter email')
       return;
     }
@@ -29,8 +29,8 @@ export class LoginComponent {
       return
     }
 
-    this.auth.login(this.email, this.password);
-    this.email = '';
+    this.auth.register(this.username, this.password);
+    this.username = '';
     this.password = '';
   }
 
