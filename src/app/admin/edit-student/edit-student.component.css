@@ -1,0 +1,12 @@
+.body{
+    margin-left: 20vmax;
+}
+
+form{
+    display:grid;
+    justify-content: center;
+}
+
+input{
+    width: 125vmin;
+}

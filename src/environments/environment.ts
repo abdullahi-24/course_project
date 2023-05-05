@@ -1,12 +1,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBtR2oxl2I21dxKpiZZ0V56fXKF5XbrZ48",
-    authDomain: "course-project-1eee4.firebaseapp.com",
-    projectId: "course-project-1eee4",
-    storageBucket: "course-project-1eee4.appspot.com",
-    messagingSenderId: "1044392745241",
-    appId: "1:1044392745241:web:17f7d36eff104bb4c6cd88",
-    measurementId: "G-Q31MKWZN1K"
+    projectId: 'online-school-system-ec8ef',
+    appId: '1:947901015721:web:1b9d9c4b9262d50c482bb8',
+    databaseURL: 'https://online-school-system-ec8ef-default-rtdb.firebaseio.com',
+    storageBucket: 'online-school-system-ec8ef.appspot.com',
+    locationId: 'us-central',
+    apiKey: 'AIzaSyA1ST2fuZgb6tMkcryTv_ij75LuE9thgpw',
+    authDomain: 'online-school-system-ec8ef.firebaseapp.com',
+    messagingSenderId: '947901015721',
   }
 }

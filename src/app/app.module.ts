@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 
 import { AppComponent } from './app.component';
@@ -18,6 +18,15 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { RegisterComponent } from './register/register.component';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { StudentListComponent } from './admin/student-list/student-list.component';
+import { EditStudentComponent } from './admin/edit-student/edit-student.component';
+import { AddStudentComponent } from './admin/add-student/add-student.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -26,20 +35,30 @@ import { RegisterComponent } from './register/register.component';
     StudentViewComponent,
     CourseComponent,
     SidebarComponent,
-    RegisterComponent
+    RegisterComponent,
+    StudentListComponent,
+    EditStudentComponent,
+    AddStudentComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgxPaginationModule,
+    ReactiveFormsModule,
+
     RouterModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
+    provideStorage(() => getStorage()),
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

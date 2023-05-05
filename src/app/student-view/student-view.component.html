@@ -8,7 +8,7 @@
     <!-- Main content section -->
     <div class="col">
       <div class="card border-dark mb-3" *ngFor="let c of course">
-        <a class="btn btn-secondary" routerLink="/course/{{ c.id }}">
+        <a class="btn btn-secondary" routerLink="/course/">
           <div class="card-body">
             <h4 class="card-title">{{c.course_id}}: {{ c.name }}</h4>
             <p class="card-text">{{ c.teacher }}</p>
