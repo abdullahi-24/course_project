@@ -1,0 +1,26 @@
+button{
+    margin-right: 10px
+}
+
+.h2{
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    display:grid;
+    justify-content: center;
+}
+
+input{
+    width: 125vmin;
+}
+
+.btn-group{
+    display:grid;
+    justify-content: right;
+}
+
+.body{
+    margin-left: 20vmax;
+}

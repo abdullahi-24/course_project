@@ -1,0 +1,85 @@
+<app-top-nav></app-top-nav>
+
+<!-- Sidebar navigation -->
+<div class="container-fluid">
+  <div class="row">
+    <app-sidebar></app-sidebar>
+    <!-- Main content -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="inner-adjust">
+        <div class="body">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h2 class="h2">Courses List</h2>
+            <a
+              routerLink="/create-course"
+              class="btn btn-success"
+              *ngIf="hideWhenNoCourse"
+            >
+              Add Course
+            </a>
+          </div>
+          <div class="pricing-header mx-auto">
+            <div class="no-data text-center" *ngIf="preLoader">
+              <img
+                src="assets/preloader.gif"
+                class="preloader-icon"
+                alt="No student"
+              />
+            </div>
+            <div class="no-data text-center" *ngIf="noData">
+              <!-- <img src="#" class="nodata-msg" alt="No student" /> -->
+              <p class="nodata-msg">No Course added yet!</p>
+              <a routerLink="/create-course" class="btn btn-success">
+                Add Course
+              </a>
+            </div>
+            <div class="table-responsive" *ngIf="hideWhenNoCourse">
+              <table
+                class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg"
+              >
+                <thead>
+                  <tr>
+                    <th scope="col">Course</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Start Date</th>
+                    <th class="text-center" scope="col">Edit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="
+                      let course of courses
+                        | paginate : { itemsPerPage: 8, currentPage: p };
+                      let i = index
+                    "
+                  >
+                    <td>{{ course.courseId }}: {{ course.courseName }}</td>
+                    <td>{{ course.courseDescription }}</td>
+                    <td>{{ course.startDate }}</td>
+                    <td class="text-center action-block">
+                      <span
+                        class="mr-2 btn btn-outline-primary btn-sm"
+                        routerLink="/edit-course/{{ course.$key }}"
+                        >Edit</span
+                      >
+                      <span
+                        class="btn btn-outline-danger btn-sm"
+                        (click)="deleteCourse(course)"
+                        >Delete</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <pagination-controls
+              (pageChange)="p = $event"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

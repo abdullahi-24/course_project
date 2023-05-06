@@ -27,7 +27,8 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
@@ -108,8 +109,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "course-application:build:production",
-            "firebaseProject": "course-project-1eee4",
-            "firebaseHostingSite": "course-project-1eee4"
+            "firebaseProject": "online-school-system-ec8ef",
+            "firebaseHostingSite": "online-school-system-ec8ef"
           }
         }
       }

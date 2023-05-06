@@ -1,0 +1,14 @@
+span{
+    margin-right: 5px;
+}
+
+.body{
+    display:grid;
+    justify-content: center;
+    margin-left: 30vmin;
+}
+
+table{
+     width: 135vmin;
+}
+

@@ -1,67 +1,50 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireStorage} from '@angular/fire/compat/storage';
-import { Course } from './model/course'
-import { FileMetaData } from './model/file-meta-data';
+import { Student } from './model/students';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+  AngularFireObject,
+} from '@angular/fire/compat/database';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-  private apiUrl = './assets/student-data.json';
+  studentsRef!: AngularFireList<any>;
+  studentRef!: AngularFireObject<any>;
+  constructor(private db: AngularFireDatabase) {}
 
-  constructor(private afs : AngularFirestore, private fireStorage : AngularFireStorage) {  }
-
-  // add course
-  addCourse(course : Course) {
-    course.name = this.afs.createId();
-    return this.afs.collection('/Courses').add(course);
+  // Create Student
+  AddStudent(student: Student) {
+    this.studentsRef.push({
+      firstName: student.firstName,
+      lastName: student.lastName,
+      email: student.email,
+      mobileNumber: student.mobileNumber,
+    });
   }
-
-  // get all courses
-  getAllCourses() {
-    return this.afs.collection('/Students').snapshotChanges();
+  // Fetch Single Student Object
+  GetStudent(id: string) {
+    this.studentRef = this.db.object('student-list/' + id);
+    return this.studentRef;
   }
-
-  //delete course
-  deleteCourse(course : Course) {
-    return this.afs.doc('/Students/' + course.id).delete;
+  // Fetch Students List
+  GetStudentsList() {
+    this.studentsRef = this.db.list('student-list');
+    return this.studentsRef;
   }
-
-  // edit course
-  editCourse(course : Course) {
-    this.deleteCourse(course);
-    this.addCourse(course)
+  // Update Student Object
+  UpdateStudent(student: Student) {
+    this.studentRef.update({
+      firstName: student.firstName,
+      lastName: student.lastName,
+      email: student.email,
+      mobileNumber: student.mobileNumber,
+    });
   }
-
-  // save meta data of file to firestore
-  saveMetaDataOfFile(fileObj : FileMetaData) {
-    const fileMeta = {
-      id : '',
-      name : fileObj.name,
-      url : fileObj.url,
-      size : fileObj.size,
-
-    }
-
-    fileMeta.id = this.afs.createId();
-
-    this.afs.collection('/Upload').add(fileMeta);
-
+  // Delete Student Object
+  DeleteStudent(id: string) {
+    this.studentRef = this.db.object('student-list/' + id);
+    this.studentRef.remove();
   }
-
-  // display all files
-  getAllFiles() {
-    this.afs.collection('/Uploads').snapshotChanges;
-  }
-
-  // delete file
-  deleteFile(fileMeta : FileMetaData) {
-    this.afs.collection('/Uploads').doc(fileMeta.id).delete();
-    this.fireStorage.ref('/Uploads'+fileMeta.name).delete;
-  }
-  
-
-
-
 }

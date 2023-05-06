@@ -6,9 +6,16 @@
           "course-project-1eee4"
         ]
       }
+    },
+    "online-school-system-ec8ef": {
+      "hosting": {
+        "course-application": [
+          "online-school-system-ec8ef"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "course-project-1eee4"
+    "default": "online-school-system-ec8ef"
   }
 }
