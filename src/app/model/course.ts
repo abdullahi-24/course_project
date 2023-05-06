@@ -1,7 +1,7 @@
 export interface Course {
-    id : number;
-    name : string;
-    instructor : string;
-    startDate : Date;
-    endDate : Date;
+  $key: string;
+  courseName: string;
+  courseDescription: string;
+  courseId: string;
+  startDate: number;
 }

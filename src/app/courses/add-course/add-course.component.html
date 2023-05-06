@@ -1,10 +1,9 @@
 <app-top-nav></app-top-nav>
+
 <!-- Sidebar navigation -->
 <div class="container-fluid">
   <div class="row">
     <app-sidebar></app-sidebar>
-
-
     <!-- Main content -->
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="inner-adjust">
@@ -13,7 +12,7 @@
             <div
               class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
             >
-              <h1 class="h2">Add Student Details</h1>
+              <h1 class="h2">Add Course Details</h1>
               <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group">
                   <button
@@ -26,79 +25,54 @@
               </div>
             </div>
             <form
-              [formGroup]="studentForm"
-              (ngSubmit)="submitStudentData()"
+              [formGroup]="courseForm"
+              (ngSubmit)="submitCourseData()"
               novalidate
             >
               <div class="row justify-content-between">
                 <div class="col-lg-5 col-md-12 col-sm-12">
                   <div class="row">
                     <div class="col-md-12 mb-3">
-                      <label>First name</label>
+                      <label>Course Name</label>
                       <input
                         type="text"
-                        formControlName="firstName"
+                        formControlName="courseName"
                         class="form-control"
                         required
                       />
                       <!-- errors-->
                       <p
-                        *ngIf="firstName?.touched && firstName?.invalid"
+                        *ngIf="courseName?.touched && courseName?.invalid"
                         class="error"
                       >
-                        <sup>*</sup>Please enter atleast first name
-                      </p>
-                      <p *ngIf="firstName?.errors?.['minlength']" class="error">
-                        <sup>*</sup>Name shouldn't be less than 2 words
+                        <sup>*</sup>Please enter a course name
                       </p>
                     </div>
                     <div class="col-md-12 mb-3">
-                      <label>Last name</label>
+                      <label>Course ID</label>
                       <input
                         type="text"
-                        formControlName="lastName"
+                        formControlName="courseId"
                         class="form-control"
                       />
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12 mb-3">
-                      <label>Email</label>
-                      <input
-                        type="email"
-                        formControlName="email"
+                      <label>Description</label>
+                      <textarea
+                        formControlName="courseDescription"
                         class="form-control"
-                        required
-                      />
-                      <!-- errors-->
-                      <p *ngIf="email?.touched && email?.invalid" class="error">
-                        <sup>*</sup>Please provide email
-                      </p>
-                      <p *ngIf="email?.errors?.['pattern']" class="error">
-                        <sup>*</sup>Please enter correct email
-                      </p>
+                        rows="3"
+                      ></textarea>
                     </div>
                     <div class="col-md-12 mb-3">
-                      <label>Mobile number</label>
+                      <label>Start Date</label>
                       <input
-                        type="text"
-                        formControlName="mobileNumber"
+                        type="date"
+                        formControlName="startDate"
                         class="form-control"
-                        required
                       />
-                      <!-- errors-->
-                      <p
-                        *ngIf="mobileNumber?.touched && mobileNumber?.invalid"
-                        class="error"
-                      >
-                        <sup>*</sup>Please provide contact number
-                      </p>
-                      <p
-                        *ngIf="mobileNumber?.errors?.['pattern']"
-                        class="error"
-                      >
-                        <sup>*</sup>Use numbers only number
-                      </p>
                     </div>
                   </div>
                   <div class="form-group text-right">
@@ -112,9 +86,9 @@
                     <button
                       type="submit"
                       class="btn btn-success"
-                      [disabled]="!studentForm.valid"
+                      [disabled]="!courseForm.valid"
                     >
-                      Add Student
+                      Add Course
                     </button>
                   </div>
                 </div>
